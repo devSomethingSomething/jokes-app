@@ -33,9 +33,10 @@ namespace JokesApp.Controllers
 
         // POST: Jokes/Search
         [HttpPost]
-        public string Search(string SearchPhrase)
+        public async Task<IActionResult> Search(string SearchPhrase)
         {
-            return $"You entered {SearchPhrase}";
+            return View("Index", await _context.Joke.Where(
+                j => j.JokeQuestion.Contains(SearchPhrase)).ToListAsync());
         }
 
         // GET: Jokes/Details/5
