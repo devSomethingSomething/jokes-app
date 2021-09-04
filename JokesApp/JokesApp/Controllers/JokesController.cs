@@ -26,9 +26,16 @@ namespace JokesApp.Controllers
         }
 
         // GET: Jokes/Search
-        public async Task<IActionResult> Search()
+        public IActionResult Search()
         {
             return View();
+        }
+
+        // POST: Jokes/Search
+        [HttpPost]
+        public string Search(string SearchPhrase)
+        {
+            return $"You entered {SearchPhrase}";
         }
 
         // GET: Jokes/Details/5
